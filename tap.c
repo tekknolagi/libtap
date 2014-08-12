@@ -61,7 +61,7 @@ vok_at_loc (const char *file, int line, int test, const char *fmt,
     char *name = vstrdupf(fmt, args);
     if (!test)
         printf("not ");
-    printf("ok %d", ++current_test);
+    printf(AC_OK("ok") "  %d", ++current_test);
     if (*name)
         printf(" - %s", name);
     if (todo_mesg) {
@@ -71,7 +71,7 @@ vok_at_loc (const char *file, int line, int test, const char *fmt,
     }
     printf("\n");
     if (!test) {
-        fprintf(stderr, "#   Failed ");
+      fprintf(stderr, "#   " AC_BAD("Failed "));
         if (todo_mesg)
             fprintf(stderr, "(TODO) ");
         fprintf(stderr, "test ");
